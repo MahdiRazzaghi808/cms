@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./vendor/iziToast/iziToast.min.css">
+    <link rel="stylesheet" href="./vendor/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>cms</title>
+</head>
+
+<!-- os === province -->
+
+<body>
+    <div class="title">پنل ادمین شهر های ایران</div>
+
+    <div class="main">
+        <p>اضافه كردن لينك شهر</p>
+        <div class="select-box">
+            <select class="os" id="courses-wrapper" onchange="changeCourses()">
+                <option value="" disabled selected>دوره ها</option>
+                <option value="business">احکام تجارت</option>
+                <option value="home">مشاوران املاک</option>
+                <option value="car">نمایشگاه داران اتومبیل</option>
+            </select>
+
+
+            <select class="os" id="oss" onchange="myFunction()">
+                <option value="" disabled selected>استان</option>
+                <option value="AzerbaijanEast">آذربايجان شرقي</option>
+                <option value="AzerbaijanWest">آذربايجان غربي</option>
+                <option value="Ardabil">اردبيل</option>
+                <option value="Isfahan">اصفهان</option>
+                <option value="Alborz">البرز</option>
+                <option value="Ilam">ايلام</option>
+                <option value="Bushire">بوشهر</option>
+                <option value="Tehran">تهران</option>
+                <option value="ChaharmahalAndBakhtiari">چهارمحال و بختياري</option>
+                <option value="SouthKhorasan">خراسان جنوبي</option>
+                <option value="RazaviKhorasan">خراسان رضوي</option>
+                <option value="NorthKhorasan">خراسان شمالي</option>
+                <option value="Khuzestan">خوزستان</option>
+                <option value="Zanjan">زنجان</option>
+                <option value="Semnan">سمنان</option>
+                <option value="SistanAndBaluchestan">سيستان و بلوچستان</option>
+                <option value="Fars">فارس</option>
+                <option value="Qazvin">قزوين</option>
+                <option value="Qom">قم</option>
+                <option value="Kurdistan">كردستان</option>
+                <option value="Kerman">كرمان</option>
+                <option value="Kermanshah">كرمانشاه</option>
+                <option value="KohgiluyehAndBoyerAhmad">كهگيلو بوير احمد</option>
+                <option value="Golestan">گلستان</option>
+                <option value="Gilan">گيلان</option>
+                <option value="Lorestan">لرستان</option>
+                <option value="Mazandaran">مازندران</option>
+                <option value="Markazi">مركزي</option>
+                <option value="Hormozgan">هرمزگان</option>
+                <option value="Hamedan">همدان</option>
+                <option value="Yazd">يزد</option>
+            </select>
+
+            <select class="os" id="cites" onchange="cityCoursesHandler()">
+                <option value="" disabled selected>شهر</option>
+
+            </select>
+        </div>
+        <div class="select-box">
+            <input type="text" id="data-input" placeholder="لینک دوره...">
+            <button id="send-data">تاييد</button>
+        </div>
+    </div>
+
+    <div class="main">
+        <p>اضافه كردن دوره</p>
+        <div class="select-box">
+            <input type="text" placeholder="فارسي..." id="fa">
+            <input type="text" placeholder="انگليسي..." id="en">
+            <button id="send-courses">تاييد</button>
+        </div>
+    </div>
+
+    
+    <div class="main">
+        <p>حذف کردن دوره</p>
+        <div class="select-box">
+            <select class="os delete-coursesW" id="courses-wrapper">
+                <option value="" disabled selected>دوره ها</option>
+                <option value="business">احکام تجارت</option>
+                <option value="home">مشاوران املاک</option>
+                <option value="car">نمایشگاه داران اتومبیل</option>
+            </select>
+            <button id="delete-courses">حذف</button>
+        </div>
+    </div>
+
+
+
+    <div class="main">
+        <p>اضافه كردن شهر</p>
+        <div class="select-box">
+            <select class="os" id="city-os">
+                <option value="" disabled selected>استان</option>
+                <option value="AzerbaijanEast">آذربايجان شرقي</option>
+                <option value="AzerbaijanWest">آذربايجان غربي</option>
+                <option value="Ardabil">اردبيل</option>
+                <option value="Isfahan">اصفهان</option>
+                <option value="Alborz">البرز</option>
+                <option value="Ilam">ايلام</option>
+                <option value="Bushire">بوشهر</option>
+                <option value="Tehran">تهران</option>
+                <option value="ChaharmahalAndBakhtiari">چهارمحال و بختياري</option>
+                <option value="SouthKhorasan">خراسان جنوبي</option>
+                <option value="RazaviKhorasan">خراسان رضوي</option>
+                <option value="NorthKhorasan">خراسان شمالي</option>
+                <option value="Khuzestan">خوزستان</option>
+                <option value="Zanjan">زنجان</option>
+                <option value="Semnan">سمنان</option>
+                <option value="SistanAndBaluchestan">سيستان و بلوچستان</option>
+                <option value="Fars">فارس</option>
+                <option value="Qazvin">قزوين</option>
+                <option value="Qom">قم</option>
+                <option value="Kurdistan">كردستان</option>
+                <option value="Kerman">كرمان</option>
+                <option value="Kermanshah">كرمانشاه</option>
+                <option value="KohgiluyehAndBoyerAhmad">كهگيلو بوير احمد</option>
+                <option value="Golestan">گلستان</option>
+                <option value="Gilan">گيلان</option>
+                <option value="Lorestan">لرستان</option>
+                <option value="Mazandaran">مازندران</option>
+                <option value="Markazi">مركزي</option>
+                <option value="Hormozgan">هرمزگان</option>
+                <option value="Hamedan">همدان</option>
+                <option value="Yazd">يزد</option>
+            </select>
+            <div class="select-box">
+                <input type="text" placeholder="شهر..." id="city-input">
+                <button id="send-city">تاييد</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="main">
+        <p>حذف كردن شهر</p>
+        <div class="select-box">
+            <select class="os" id="city-os-delete" onchange="deleteChangeHandler()">
+                <option value="" disabled selected>استان</option>
+                <option value="AzerbaijanEast">آذربايجان شرقي</option>
+                <option value="AzerbaijanWest">آذربايجان غربي</option>
+                <option value="Ardabil">اردبيل</option>
+                <option value="Isfahan">اصفهان</option>
+                <option value="Alborz">البرز</option>
+                <option value="Ilam">ايلام</option>
+                <option value="Bushire">بوشهر</option>
+                <option value="Tehran">تهران</option>
+                <option value="ChaharmahalAndBakhtiari">چهارمحال و بختياري</option>
+                <option value="SouthKhorasan">خراسان جنوبي</option>
+                <option value="RazaviKhorasan">خراسان رضوي</option>
+                <option value="NorthKhorasan">خراسان شمالي</option>
+                <option value="Khuzestan">خوزستان</option>
+                <option value="Zanjan">زنجان</option>
+                <option value="Semnan">سمنان</option>
+                <option value="SistanAndBaluchestan">سيستان و بلوچستان</option>
+                <option value="Fars">فارس</option>
+                <option value="Qazvin">قزوين</option>
+                <option value="Qom">قم</option>
+                <option value="Kurdistan">كردستان</option>
+                <option value="Kerman">كرمان</option>
+                <option value="Kermanshah">كرمانشاه</option>
+                <option value="KohgiluyehAndBoyerAhmad">كهگيلو بوير احمد</option>
+                <option value="Golestan">گلستان</option>
+                <option value="Gilan">گيلان</option>
+                <option value="Lorestan">لرستان</option>
+                <option value="Mazandaran">مازندران</option>
+                <option value="Markazi">مركزي</option>
+                <option value="Hormozgan">هرمزگان</option>
+                <option value="Hamedan">همدان</option>
+                <option value="Yazd">يزد</option>
+            </select>
+            <div class="select-box">
+                <select class="os" id="cites-delete">
+                    <option value="" disabled selected>شهر</option>
+
+                </select>
+                <button id="delete-city">حذف</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./vendor/iziToast/iziToast.min.js" type="text/javascript">    </script>
+    <script src="./vendor/sweetalert2/sweetalert2.all.min.js" type="text/javascript">    </script>
+    <script src="./app.js"></script>
+</body>
+
+</html>
