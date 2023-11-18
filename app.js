@@ -222,13 +222,7 @@ sendData.addEventListener('click', () => {
 
         })
 
-    } else if (dataInput.value === '') {
-        iziToast.warning({
-            position: 'topRight',
-            message: 'لینک شهر نباید خالی باشد'
-
-        })
-    } else {
+    }} else {
         Swal.fire({
             title: "آیا از ثبت لینک مطمین هستید ؟",
             showDenyButton: true,
