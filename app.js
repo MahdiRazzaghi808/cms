@@ -222,7 +222,7 @@ sendData.addEventListener('click', () => {
 
         })
 
-    }} else {
+    } else {
         Swal.fire({
             title: "آیا از ثبت لینک مطمین هستید ؟",
             showDenyButton: true,
